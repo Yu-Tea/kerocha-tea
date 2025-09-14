@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #f6f1ea;
+  color: #6d635f;
+  background-image: url("/images/bg_left.png"), url("/images//bg_right.png");
+  background-position: top left, top right;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 640px) {
+  body {
+    background-image: none;
+  }
+}
+
+#root {
+  min-height: 100vh;
+}

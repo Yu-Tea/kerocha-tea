@@ -1,0 +1,95 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { questions } from "../data/questions";
+import { DiagnosisResult } from "../types/diagnosis";
+
+
+
+// ランダム値生成
+const getRandomInRange = (min: number, max: number): number => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+export const useDiagnosis = () => {
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState<{
+    hue?: number;
+    saturation?: number;
+    lightness?: number;
+  }>({});
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const navigate = useNavigate();
+
+  const currentQuestion = questions[currentQuestionIndex];
+  const isLastQuestion = currentQuestionIndex === questions.length - 1;
+
+  const selectOption = (optionId: string) => {
+    const option = currentQuestion.options.find((opt) => opt.id === optionId);
+    if (!option) return;
+
+    // 選択肢を記録
+    const newSelectedOptions = [...selectedOptions, optionId];
+    setSelectedOptions(newSelectedOptions);
+
+    // ランダム値で回答を生成
+    const newAnswers = { ...answers };
+
+    if (option.hueRange) {
+      newAnswers.hue = getRandomInRange(
+        option.hueRange.min,
+        option.hueRange.max
+      );
+    }
+    if (option.saturationRange) {
+      newAnswers.saturation = getRandomInRange(
+        option.saturationRange.min,
+        option.saturationRange.max
+      );
+    }
+    if (option.lightnessRange) {
+      newAnswers.lightness = getRandomInRange(
+        option.lightnessRange.min,
+        option.lightnessRange.max
+      );
+    }
+
+    setAnswers(newAnswers);
+
+    if (isLastQuestion) {
+      // ユーザー名を取得
+      const userInfo = localStorage.getItem('userInfo');
+      const userName = userInfo ? JSON.parse(userInfo).name : '';
+
+      // 診断結果を作成
+      const result: DiagnosisResult = {
+        hue: newAnswers.hue || 200,
+        saturation: newAnswers.saturation || 50,
+        lightness: newAnswers.lightness || 50,
+        color: `hsl(${newAnswers.hue || 200}, ${newAnswers.saturation || 50}%, ${newAnswers.lightness || 50}%)`,
+        selectedOptions: newSelectedOptions,
+        userName: userName // ユーザー名を結果に含める
+      };
+
+      // 結果をローカルストレージに保存
+      localStorage.setItem("diagnosisResult", JSON.stringify(result));
+      navigate("/result");
+    } else {
+      // 次の質問へ
+      setCurrentQuestionIndex((prev) => prev + 1);
+    }
+  };
+
+  // 診断をリセットする関数
+  const resetDiagnosis = () => {
+    setCurrentQuestionIndex(0);
+    setAnswers({});
+    setSelectedOptions([]);
+  };
+
+  return {
+    currentQuestion,
+    selectOption,
+    resetDiagnosis,
+    isLastQuestion,
+  };
+};
