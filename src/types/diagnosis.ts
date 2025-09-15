@@ -14,7 +14,7 @@ export interface Option {
   text: string;
   hueRange?: ColorRange;        // 色相の範囲
   saturationRange?: ColorRange; // 彩度の範囲
-  lightnessRange?: ColorRange;  // 明度の範囲
+  brightnessRange?: ColorRange;  // 明度の範囲
 }
 
 export interface UserInfo {
@@ -25,8 +25,7 @@ export interface UserInfo {
 export interface DiagnosisResult {
   hue: number;
   saturation: number;
-  lightness: number;
-  color: string;
+  brightness: number;
   selectedOptions: string[]; // どの選択肢を選んだかも記録
   userName?: string; // ユーザー名を追加
 }

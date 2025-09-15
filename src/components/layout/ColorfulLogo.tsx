@@ -26,7 +26,6 @@ export default function App() {
       transition={{
         type: "spring",
         duration: 2,
-        delay: 0.5,
         ease: "easeOut",
       }}
     >

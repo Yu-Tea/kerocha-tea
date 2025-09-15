@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { questions } from "../data/questions";
 import { DiagnosisResult } from "../types/diagnosis";
 
-
-
 // ランダム値生成
 const getRandomInRange = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -15,7 +13,7 @@ export const useDiagnosis = () => {
   const [answers, setAnswers] = useState<{
     hue?: number;
     saturation?: number;
-    lightness?: number;
+    brightness?: number;
   }>({});
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const navigate = useNavigate();
@@ -46,10 +44,10 @@ export const useDiagnosis = () => {
         option.saturationRange.max
       );
     }
-    if (option.lightnessRange) {
-      newAnswers.lightness = getRandomInRange(
-        option.lightnessRange.min,
-        option.lightnessRange.max
+    if (option.brightnessRange) {
+      newAnswers.brightness = getRandomInRange(
+        option.brightnessRange.min,
+        option.brightnessRange.max
       );
     }
 
@@ -57,17 +55,16 @@ export const useDiagnosis = () => {
 
     if (isLastQuestion) {
       // ユーザー名を取得
-      const userInfo = localStorage.getItem('userInfo');
-      const userName = userInfo ? JSON.parse(userInfo).name : '';
+      const userInfo = localStorage.getItem("userInfo");
+      const userName = userInfo ? JSON.parse(userInfo).name : "";
 
       // 診断結果を作成
       const result: DiagnosisResult = {
-        hue: newAnswers.hue || 200,
-        saturation: newAnswers.saturation || 50,
-        lightness: newAnswers.lightness || 50,
-        color: `hsl(${newAnswers.hue || 200}, ${newAnswers.saturation || 50}%, ${newAnswers.lightness || 50}%)`,
-        selectedOptions: newSelectedOptions,
-        userName: userName // ユーザー名を結果に含める
+        hue: newAnswers.hue || 100,
+        saturation: newAnswers.saturation || 5,
+        brightness: newAnswers.brightness || 5,
+        selectedOptions: newSelectedOptions, //これもいらないかも？後で要検討
+        userName: userName, // ユーザー名を結果に含める
       };
 
       // 結果をローカルストレージに保存

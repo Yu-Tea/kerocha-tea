@@ -8,32 +8,32 @@ export const questions: Question[] = [
       {
         id: "hue1",
         text: "もっと頑張りたい",
-        hueRange: { min: 0, max: 39 }, // 赤・オレンジ系
+        hueRange: { min: 0, max: 40 }, // 赤・オレンジ系
       },
       {
         id: "hue2",
         text: "ワクワクしたい",
-        hueRange: { min: 40, max: 64 }, // 黄色系
+        hueRange: { min: 50, max: 70 }, // 黄色系
       },
       {
         id: "hue3",
         text: "リフレッシュしたい",
-        hueRange: { min: 75, max: 170 }, // 黄緑・緑系
+        hueRange: { min: 90, max: 140 }, // 黄緑・緑系
       },
       {
         id: "hue4",
         text: "静かにすごしたい",
-        hueRange: { min: 190, max: 240 }, // 水色・青系
+        hueRange: { min: 190, max: 230 }, // 水色・青系
       },
       {
         id: "hue5",
         text: "フシギを感じたい",
-        hueRange: { min: 260, max: 290 }, // 紫系
+        hueRange: { min: 250, max: 275 }, // 紫系
       },
       {
         id: "hue6",
         text: "優しくなりたい",
-        hueRange: { min: 300, max: 340 }, // ピンク系
+        hueRange: { min: 290, max: 350 }, // ピンク系
       },
     ],
   },
@@ -44,17 +44,17 @@ export const questions: Question[] = [
       {
         id: "sat1",
         text: "しっかり元気！",
-        saturationRange: { min: 70, max: 90 }, // 高い彩度
+        saturationRange: { min: 5.1, max: 5.9 }, // 高い彩度
       },
       {
         id: "sat2",
         text: "普通だよ",
-        saturationRange: { min: 40, max: 60 }, // 普通の彩度
+        saturationRange: { min: 3.1, max: 4.0 }, // 普通の彩度
       },
       {
         id: "sat3",
         text: "お疲れ気味かなぁ",
-        saturationRange: { min: 10, max: 30 }, // 低い彩度
+        saturationRange: { min: 1.1, max: 2.0 }, // 低い彩度
       },
     ],
   },
@@ -63,19 +63,19 @@ export const questions: Question[] = [
     text: "この後、どう過ごすの？",
     options: [
       {
-        id: "light1",
+        id: "bright1",
         text: "やること盛りだくさん！",
-        lightnessRange: { min: 65, max: 80 }, // 明るい
+        brightnessRange: { min: 2.3, max: 3.0 }, // 明るい
       },
       {
-        id: "light2",
+        id: "bright2",
         text: "いつも通りかな〜",
-        lightnessRange: { min: 45, max: 60 }, // 普通
+        brightnessRange: { min: 1.6, max: 2.0 }, // 普通
       },
       {
-        id: "light3",
+        id: "bright3",
         text: "ゆっくり休むつもり",
-        lightnessRange: { min: 25, max: 40 }, // 暗い
+        brightnessRange: { min: 1.0, max: 1.4 }, // 暗い
       },
     ],
   },

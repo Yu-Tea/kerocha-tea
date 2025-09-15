@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { DiagnosisResult } from "../types/diagnosis";
 import { motion } from "framer-motion";
+import { pageVariants } from "../utils/animations";
+import Tea from "/public/images/tea.svg";
 
 const ResultPage = () => {
   const [result, setResult] = useState<DiagnosisResult | null>(null);
@@ -35,38 +37,30 @@ const ResultPage = () => {
   return (
     <>
       <motion.div
-        initial={{ filter: "blur(20px)", opacity: 0, x: 10 }}
-        animate={{ filter: "none", opacity: 100, x: 0 }}
-        exit={{ opacity: 0, x: -10 }}
-        transition={{
-          type: "spring",
-          duration: 1,
-          ease: "easeOut",
-        }}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
         className="flex flex-col flex-auto justify-center items-center"
       >
-        <div className="text-base bg-white p-6 rounded-2xl mb-4">
-          {" "}
+        <div className="text-base bg-white p-6 rounded-2xl mb-2">
           {result.userName ? `${result.userName}さんの` : "あなたの"}
           お茶ができたよ〜！
-          <p>{result.color}</p>
+          <p>H：{result.hue}/S：{result.saturation}/B：{result.brightness}</p>
         </div>
-        {/* 結果の色を表示 */}
-        <div
-          style={{
-            width: "200px",
-            height: "200px",
-            backgroundColor: result.color,
-            borderRadius: "50%",
-            margin: "30px auto",
-          }}
-        />
-        {/* 色の詳細情報 */}
-
-        {/* 選択した回答の表示（オプション） */}
-        {/* <div style={{ marginBottom: "30px", fontSize: "14px", color: "#666" }}>
-          <p>選択した回答: {result.selectedOptions.join(", ")}</p>
-        </div> */}
+        
+        {/* お茶の画像部分 */}
+        <div className="relative">
+          <img
+            src={Tea}
+            alt="ケロチャのカラフルティータイム"
+            className="w-full h-auto absolute left-0 top-0"
+            style={{
+              filter: `hue-rotate(${result.hue}deg) saturate(${result.saturation}) brightness(${result.brightness})`,
+            }}
+          />
+          <img src={"/images/tea_bg.png"} alt="ケロチャ" className="" />
+        </div>
         {/* ボタン */}
         <div>
           <Link to="/">
