@@ -16,13 +16,13 @@ const Home = () => {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="flex flex-col justify-center items-center gap-2"
+          className="flex flex-col justify-center items-center gap-4 mb-4 sm:mb-10"
         >
           <Link to="/teatime">
-            <Button variant="select-button">お茶を作ってもらう</Button>
+            <Button variant="select-btn">お茶を作ってもらう</Button>
           </Link>
           <Link to="/about">
-            <Button variant="select-button">はじめましての方へ</Button>
+            <Button variant="select-btn">はじめましての方へ</Button>
           </Link>
         </motion.div>
       </div>
