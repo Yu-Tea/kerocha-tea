@@ -5,7 +5,8 @@ import About from "./pages/About";
 import TeaTime from "./pages/TeaTime";
 import Result from "./pages/Result";
 import Shared from "./pages/Shared";
-import Footer from "./components/layout/Footer.tsx";
+import TeaTimeImage from "./components/layout/TeaTimeImage.tsx";
+import UserName from "./pages/UserName.tsx";
 
 function App() {
   const location = useLocation();
@@ -18,13 +19,14 @@ function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/username" element={<UserName />} />
             <Route path="/teatime" element={<TeaTime />} />
             <Route path="/result" element={<Result />} />
             <Route path="/shared" element={<Shared />} />
           </Routes>
         </AnimatePresence>
       </div>
-      <Footer />
+      <TeaTimeImage />
     </div>
   );
 }

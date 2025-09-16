@@ -18,7 +18,7 @@ const Home = () => {
           exit="exit"
           className="flex flex-col justify-center items-center gap-4 mb-4 sm:mb-10"
         >
-          <Link to="/teatime">
+          <Link to="/username">
             <Button variant="select-btn">お茶を作ってもらう</Button>
           </Link>
           <Link to="/about">

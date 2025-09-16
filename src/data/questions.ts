@@ -39,7 +39,7 @@ export const questions: Question[] = [
   },
   {
     id: 2,
-    text: "今のキミの元気はどのくらい？",
+    text: "そうなんだね。じゃあ、今のキミの元気はどのくらい？",
     options: [
       {
         id: "sat1",
@@ -60,7 +60,7 @@ export const questions: Question[] = [
   },
   {
     id: 3,
-    text: "この後、どう過ごすの？",
+    text: "最後の質問だよ。この後、どう過ごすの？",
     options: [
       {
         id: "bright1",
