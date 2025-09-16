@@ -107,7 +107,7 @@ const UserNameInput = ({
           {error && <p className="mb-4 text-center text-red-600">{error}</p>}
           <div className="text-center mb-4 sm:mb-10">
             <Button variant="select-btn" type="submit">
-              診断を始める
+              名前を教える
             </Button>
           </div>
         </form>
