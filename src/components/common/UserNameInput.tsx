@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { pageVariants } from "../../utils/animations";
+import { Button } from "./Button";
 
 interface UserNameInputProps {
   onNameSubmit: (name: string) => void;
@@ -45,21 +46,24 @@ const UserNameInput = ({
           initial="initial"
           animate="animate"
           exit="exit"
-          className="flex flex-col flex-auto justify-center items-center"
+          className="flex flex-auto flex-col items-center justify-center"
         >
-          <div className="text-base bg-white p-6 rounded-2xl mb-4">
-            <p className="text-base">
+          <div className="bubble">
+            <p>ようこそ、ボクのお茶会へ！</p>
+            <p>
               あっ、
-              <strong className="text-green-700">{existingName}</strong>
+              <strong className="text-secondary">{existingName}</strong>
               さんだよね〜？
             </p>
           </div>
 
-          <div
-            style={{ display: "flex", gap: "15px", justifyContent: "center" }}
-          >
-            <button onClick={onExistingNameConfirm}>そうだよ</button>
-            <button onClick={onExistingNameReject}>違うよ</button>
+          <div className="flex flex-col justify-center items-center gap-y-5 mb-4 sm:mb-10">
+            <Button variant="select-btn" onClick={onExistingNameConfirm}>
+              そうだよ〜
+            </Button>
+            <Button variant="select-btn" onClick={onExistingNameReject}>
+              ちがうよ〜
+            </Button>
           </div>
         </motion.div>
       </>
@@ -74,10 +78,11 @@ const UserNameInput = ({
         initial="initial"
         animate="animate"
         exit="exit"
-        className="flex flex-col flex-auto justify-center items-center"
+        className="flex flex-auto flex-col items-center justify-center"
       >
-        <div className="text-base bg-white p-6 rounded-2xl mb-4">
-          <p>まずはキミのお名前を教えて〜</p>
+        <div className="bubble">
+          <p>はじめましてかなぁ？</p>
+          <p>まずはキミのお名前を教えて〜！</p>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-2">
@@ -86,12 +91,12 @@ const UserNameInput = ({
               value={inputName}
               onChange={(e) => setInputName(e.target.value)}
               placeholder="お名前は10文字以内だよ"
-              className="w-full max-w-[400px] p-4 rounded-md outline-none"
+              className="mb-2 w-[260px] rounded-md px-4 py-3 text-base text-secondary outline-none"
               style={{
                 border: error ? "2px solid #dc3545" : "2px solid #ddd",
               }}
               onFocus={(e) => {
-                if (!error) e.currentTarget.style.borderColor = "#007bff";
+                if (!error) e.currentTarget.style.borderColor = "#b4d1b9";
               }}
               onBlur={(e) => {
                 if (!error) e.currentTarget.style.borderColor = "#ddd";
@@ -99,9 +104,12 @@ const UserNameInput = ({
             />
           </div>
 
-          {error && <p className="text-red-600 text-center mb-4">{error}</p>}
-
-          <button type="submit">診断を始める</button>
+          {error && <p className="mb-4 text-center text-red-600">{error}</p>}
+          <div className="text-center mb-4 sm:mb-10">
+            <Button variant="select-btn" type="submit">
+              診断を始める
+            </Button>
+          </div>
         </form>
       </motion.div>
     </>

@@ -7,10 +7,9 @@ type Props = Omit<HTMLMotionProps<"button">, "children"> & {
 };
 
 const buttonStyle = {
-  "select-button":
-    " text-lg border-dotted border-b-4 border-stone-400 px-1 pb-1.5",
-  "red-gradation":
-    "bg-gradient-to-r from-red-300 to-red-600 text-white, hover:from-red-600 hover:to-red-300",
+  "select-btn":
+    "text-lg border-dotted border-b-4 border-stone-400 px-1 pb-1.5 font-bold hover:text-secondary",
+  "green-btn": "bg-secondary text-white px-5 py-2 rounded-full font-bold",
 } as const;
 
 export const Button = ({ children, variant, className, ...props }: Props) => {

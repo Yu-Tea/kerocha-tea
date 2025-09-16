@@ -41,7 +41,7 @@ const TeaTimePage = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="flex flex-col justify-center items-center"
+      className="flex flex-col items-center justify-center"
     >
       {/* AnimatePresenceで全体の切り替えを制御 */}
       <AnimatePresence mode="wait">
@@ -81,7 +81,7 @@ const TeaTimePage = () => {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="w-full flex justify-center"
+            className="flex w-full justify-center"
           >
             {/* 質問部分 */}
             {isPageMounted ? (
@@ -92,18 +92,16 @@ const TeaTimePage = () => {
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="flex flex-col justify-center items-center"
+                  className="flex flex-col items-center justify-center"
                 >
                   {/* 質問 */}
-                  <div className="text-base bg-white p-6 rounded-2xl mb-4">
-                    {currentQuestion.text}
-                  </div>
+                  <div className="bubble">{currentQuestion.text}</div>
 
                   {/* 選択肢 */}
-                  <div className="flex flex-col gap-4">
+                  <div className="mb-4 flex flex-col gap-y-5 sm:mb-10">
                     {currentQuestion.options.map((option) => (
                       <Button
-                        variant="select-button"
+                        variant="select-btn"
                         key={option.id}
                         onClick={() => selectOption(option.id)}
                       >
@@ -114,15 +112,13 @@ const TeaTimePage = () => {
                 </motion.div>
               </AnimatePresence>
             ) : (
-              // ページマウント中は静的表示
-              <div className="flex flex-col justify-center items-center">
-                <div className="text-base bg-white p-6 rounded-2xl mb-4">
-                  {currentQuestion.text}
-                </div>
+              // ページマウント中は静的表示する
+              <div className="flex flex-col items-center justify-center">
+                <div className="bubble">{currentQuestion.text}</div>
                 <div className="flex flex-col gap-4">
                   {currentQuestion.options.map((option) => (
                     <Button
-                      variant="select-button"
+                      variant="select-btn"
                       key={option.id}
                       onClick={() => selectOption(option.id)}
                     >

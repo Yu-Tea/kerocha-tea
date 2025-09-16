@@ -2,11 +2,18 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        secondary: {
+          DEFAULT: "#6aa274",
+          500: "secondary",
+        },
+      },
+    },
     fontSize: {
       xs: "1rem",
       sm: "1.1rem",
-      base: "1.2rem",
+      base: "1.25rem",
       lg: "1.4rem",
       xl: "1.6rem",
       "2xl": "2.0rem",

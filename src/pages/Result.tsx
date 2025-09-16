@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { DiagnosisResult } from "../types/diagnosis";
 import { motion } from "framer-motion";
 import { pageVariants } from "../utils/animations";
+import { Button } from "../components/common/Button";
 import Tea from "/public/images/tea.svg";
 
 const ResultPage = () => {
@@ -41,30 +42,45 @@ const ResultPage = () => {
         initial="initial"
         animate="animate"
         exit="exit"
-        className="flex flex-col flex-auto justify-center items-center"
+        className="flex flex-col items-center justify-center"
       >
-        <div className="text-base bg-white p-6 rounded-2xl mb-2">
-          {result.userName ? `${result.userName}さんの` : "あなたの"}
-          お茶ができたよ〜！
-          <p>H：{result.hue}/S：{result.saturation}/B：{result.brightness}</p>
+        <div className="bubble">
+          {result.userName ? (
+            <>
+              <span className="text-secondary">{result.userName}</span>さん
+            </>
+          ) : (
+            "あなた"
+          )}
+          のお茶ができたよ〜！
+          <p>
+            H：{result.hue}/S：{result.saturation}/B：{result.brightness}
+          </p>
         </div>
-        
+
         {/* お茶の画像部分 */}
         <div className="relative">
           <img
             src={Tea}
             alt="ケロチャのカラフルティータイム"
-            className="w-full h-auto absolute left-0 top-0"
+            className="absolute left-0 top-0 h-auto w-full"
             style={{
-              filter: `hue-rotate(${result.hue}deg) saturate(${result.saturation}) brightness(${result.brightness})`,
+              filter: `hue-rotate(${result.hue}deg) saturate(${result.saturation}) brightness(${result.brightness}) blur(3px)`,
             }}
           />
           <img src={"/images/tea_bg.png"} alt="ケロチャ" className="" />
         </div>
         {/* ボタン */}
-        <div>
+        <div className="flex flex-col justify-center items-center gap-4 mb-4 sm:mb-10">
           <Link to="/">
-            <button onClick={handleRestart}>トップに戻る</button>
+            <Button variant="select-btn" onClick={handleRestart}>
+              Ｘで共有する！
+            </Button>
+          </Link>
+          <Link to="/">
+            <Button variant="select-btn" onClick={handleRestart}>
+              ごちそうさま！
+            </Button>
           </Link>
         </div>
       </motion.div>
