@@ -4,8 +4,10 @@ import { questions } from "../data/questions";
 import { DiagnosisResult } from "../types/diagnosis";
 
 // ランダム値生成
-const getRandomInRange = (min: number, max: number): number => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+export const getRandomInRange = (min: number, max: number, decimals: number = 0): number => {
+  const random = Math.random() * (max - min) + min;
+  // 小数点第一位までの数値にするために、小数点右にずらす→四捨五入で小数点以下を取り除く→小数点の位置を戻すの処理
+  return Math.round(random * Math.pow(10, decimals)) / Math.pow(10, decimals);
 };
 
 export const useDiagnosis = () => {
@@ -35,19 +37,22 @@ export const useDiagnosis = () => {
     if (option.hueRange) {
       newAnswers.hue = getRandomInRange(
         option.hueRange.min,
-        option.hueRange.max
+        option.hueRange.max,
+        0 // 色相は整数
       );
     }
     if (option.saturationRange) {
       newAnswers.saturation = getRandomInRange(
         option.saturationRange.min,
-        option.saturationRange.max
+        option.saturationRange.max,
+      1 // 小数点第一位まで
       );
     }
     if (option.brightnessRange) {
       newAnswers.brightness = getRandomInRange(
         option.brightnessRange.min,
-        option.brightnessRange.max
+        option.brightnessRange.max,
+      1 // 小数点第一位まで
       );
     }
 

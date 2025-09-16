@@ -44,7 +44,7 @@ export const questions: Question[] = [
       {
         id: "sat1",
         text: "しっかり元気！",
-        saturationRange: { min: 5.1, max: 5.9 }, // 高い彩度
+        saturationRange: { min: 5.1, max: 6.0 }, // 高い彩度
       },
       {
         id: "sat2",
