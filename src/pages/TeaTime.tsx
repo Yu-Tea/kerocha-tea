@@ -3,31 +3,8 @@ import { useDiagnosis } from "../hooks/useDiagnosis";
 import { useUserName } from "../hooks/useUserName";
 import { motion, AnimatePresence } from "framer-motion";
 import UserNameInput from "../components/common/UserNameInput";
-
-const pageVariants = {
-  initial: { opacity: 0, x: 20 },
-  in: { opacity: 1, x: 0 },
-  out: { opacity: 0, x: -20 },
-};
-
-const questionVariants = {
-  initial: {
-    filter: "blur(10px)",
-    opacity: 0,
-    x: 20,
-  },
-  animate: {
-    filter: "none",
-    opacity: 1,
-    x: 0,
-    scale: 1,
-  },
-  exit: {
-    opacity: 0,
-    x: -20,
-    transition: { duration: 0.2 },
-  },
-};
+import { pageVariants } from "../utils/animations";
+import { Button } from "../components/common/Button";
 
 const TeaTimePage = () => {
   const [showQuestions, setShowQuestions] = useState(false);
@@ -47,11 +24,10 @@ const TeaTimePage = () => {
   if (isLoading) {
     return (
       <motion.div
-        initial="initial"
-        animate="in"
-        exit="out"
         variants={pageVariants}
-        transition={{ duration: 1 }}
+        initial="initial"
+        animate="animate"
+        exit="exit"
         style={{ padding: "20px", textAlign: "center" }}
       >
         <p>読み込み中...</p>
@@ -61,12 +37,11 @@ const TeaTimePage = () => {
 
   return (
     <motion.div
-      initial="initial"
-      animate="in"
-      exit="out"
       variants={pageVariants}
-      transition={{ duration: 0.5 }}
-      className="flex flex-col flex-auto justify-center items-center"
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="flex flex-col justify-center items-center"
     >
       {/* AnimatePresenceで全体の切り替えを制御 */}
       <AnimatePresence mode="wait">
@@ -74,11 +49,10 @@ const TeaTimePage = () => {
           // ユーザー名入力フェーズ
           <motion.div
             key="username-input"
-            initial="initial"
-            animate="in"
-            exit="out"
             variants={pageVariants}
-            transition={{ duration: 0.5 }}
+            initial="initial"
+            animate="animate"
+            exit="exit"
           >
             <UserNameInput
               existingName={userInfo?.name}
@@ -103,11 +77,10 @@ const TeaTimePage = () => {
           // 質問フェーズ
           <motion.div
             key="questions"
-            initial="initial"
-            animate="in"
-            exit="out"
             variants={pageVariants}
-            transition={{ duration: 0.5 }}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             className="w-full flex justify-center"
           >
             {/* 質問部分 */}
@@ -115,15 +88,10 @@ const TeaTimePage = () => {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentQuestion.id}
+                  variants={pageVariants}
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  variants={questionVariants}
-                  transition={{
-                    type: "spring",
-                    duration: 2,
-                    ease: "easeOut",
-                  }}
                   className="flex flex-col justify-center items-center"
                 >
                   {/* 質問 */}
@@ -134,12 +102,13 @@ const TeaTimePage = () => {
                   {/* 選択肢 */}
                   <div className="flex flex-col gap-4">
                     {currentQuestion.options.map((option) => (
-                      <button
+                      <Button
+                        variant="select-button"
                         key={option.id}
                         onClick={() => selectOption(option.id)}
                       >
                         {option.text}
-                      </button>
+                      </Button>
                     ))}
                   </div>
                 </motion.div>
@@ -152,12 +121,13 @@ const TeaTimePage = () => {
                 </div>
                 <div className="flex flex-col gap-4">
                   {currentQuestion.options.map((option) => (
-                    <button
+                    <Button
+                      variant="select-button"
                       key={option.id}
                       onClick={() => selectOption(option.id)}
                     >
                       {option.text}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { pageVariants } from "../../utils/animations";
 
 interface UserNameInputProps {
   onNameSubmit: (name: string) => void;
@@ -40,14 +41,10 @@ const UserNameInput = ({
     return (
       <>
         <motion.div
-          initial={{ filter: "blur(20px)", opacity: 0, x: 20 }}
-          animate={{ filter: "none", opacity: 100, x: 0 }}
-          exit={{ opacity: 0, x: -20 }}
-          transition={{
-            type: "spring",
-            duration: 2,
-            ease: "easeOut",
-          }}
+          variants={pageVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
           className="flex flex-col flex-auto justify-center items-center"
         >
           <div className="text-base bg-white p-6 rounded-2xl mb-4">
@@ -73,15 +70,10 @@ const UserNameInput = ({
   return (
     <>
       <motion.div
-        initial={{ filter: "blur(20px)", opacity: 0, x: 20 }}
-        animate={{ filter: "none", opacity: 100, x: 0 }}
-        exit={{ opacity: 0, x: -20 }}
-        transition={{
-          type: "spring",
-          duration: 2,
-          delay: 1,
-          ease: "easeOut",
-        }}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
         className="flex flex-col flex-auto justify-center items-center"
       >
         <div className="text-base bg-white p-6 rounded-2xl mb-4">
