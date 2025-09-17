@@ -13,22 +13,26 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center gap-x-2 px-4 py-5 sm:flex-row">
-      {/* ページ遷移でアニメーションする部分 */}
-      <div className="flex-auto">
+    <div className="mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center gap-x-2 px-4 py-5 lg:flex-row">
+      {/* ページ遷移でアニメーションする箇所 */}
+      <div className="flex flex-auto items-center justify-center">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.key}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/username" element={<UserName />} />
-            <Route path="/newusername" element={<NewUserName />} /> 
+            <Route path="/newusername" element={<NewUserName />} />
             <Route path="/teatime" element={<TeaTime />} />
             <Route path="/result" element={<Result />} />
             <Route path="/shared" element={<Shared />} />
           </Routes>
         </AnimatePresence>
       </div>
-      <TeaTimeImage />
+
+      {/* /aboutページ以外でのみ表示 */}
+      <AnimatePresence>
+        {location.pathname !== "/about" && <TeaTimeImage />}
+      </AnimatePresence>
     </div>
   );
 }

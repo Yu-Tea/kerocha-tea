@@ -13,9 +13,9 @@ const UserNameInput = ({
 }: UserNameInputProps) => (
   <div className="flex flex-auto flex-col items-center justify-center">
     <div className="bubble">
-      <p>ようこそ、ボクのお茶会へ！</p>
+      <p>ボクのお茶を飲みにきてくれてありがと〜。</p>
       <p>
-        あっ、<span className="text-secondary">{existingName}</span>
+        <span className="text-secondary">{existingName}</span>
         さんだよね〜？
       </p>
     </div>

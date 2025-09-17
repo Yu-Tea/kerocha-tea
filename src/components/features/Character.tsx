@@ -1,0 +1,120 @@
+import { useState, useEffect } from "react";
+import type {
+  CharacterProps,
+  Expressions,
+  ExpressionParts,
+} from "../../types/character";
+import { getTimeBasedResponses } from "../../utils/timeUtils";
+
+const Character = ({
+  mood = "normal",
+  dialogue = "いらっしゃ〜い！",
+  isClickable = true,
+  onCharacterClick,
+}: CharacterProps) => {
+  const [currentExpression, setCurrentExpression] = useState<
+    "normal" | "happy" | "speak"
+  >(mood);
+  const [currentDialogue, setCurrentDialogue] = useState(dialogue);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+
+  // 表情の定義
+  const expressions: Expressions = {
+    normal: {
+      eyes: "/images/k_eye_normal.png",
+      mouth: "/images/k_mouth_normal.png",
+      body: "/images/k_body_normal.png",
+    },
+    happy: {
+      eyes: "/images/k_eye_smile.png",
+      mouth: "/images/k_mouth_laugh.png",
+      body: "/images/k_body_banzai.png",
+    },
+    speak: {
+      eyes: "/images/k_eye_itome.png",
+      mouth: "/images/k_mouth_speak.png",
+      body: "/images/k_body_think.png",
+    },
+  };
+
+  // セリフと表情を即時変更する関数
+  const changeDialogueAndMood = (
+    newDialogue: string,
+    newMood: "normal" | "happy" | "speak"
+  ) => {
+    // 即座に変更
+    setCurrentDialogue(newDialogue);
+    setCurrentExpression(newMood);
+    setIsAnimating(true);
+
+    // 指定時間後に元に戻す
+    setTimeout(() => {
+      setCurrentExpression(mood);
+      setCurrentDialogue(dialogue);
+      setIsAnimating(false);
+    }, 2500);
+  };
+
+  // キャラクタークリック時の処理
+  const handleCharacterClick = () => {
+    if (!isClickable || isAnimating) return;
+
+    // 時間帯に応じた反応パターンを取得
+    const responses = getTimeBasedResponses();
+
+    // ランダムに反応パターンを選択
+    const randomResponse =
+      responses[Math.floor(Math.random() * responses.length)];
+    changeDialogueAndMood(randomResponse.dialogue, randomResponse.mood);
+
+    // 外部コールバックも実行
+    if (onCharacterClick) {
+      onCharacterClick();
+    }
+  };
+
+  // propsが変わったら更新
+  useEffect(() => {
+    if (!isAnimating) {
+      setCurrentExpression(mood);
+      setCurrentDialogue(dialogue);
+    }
+  }, [mood, dialogue, isAnimating]);
+
+  const currentParts: ExpressionParts = expressions[currentExpression];
+
+  return (
+    <div className="">
+      {/* セリフ（アニメーションなし） */}
+      {currentDialogue && (
+        <div className="mb-3 w-[300px] text-center text-base font-bold text-secondary">
+          <p>{currentDialogue}</p>
+        </div>
+      )}
+
+      {/* キャラクター本体（クリック可能・アニメーションなし） */}
+      <div
+        className={`relative inline-block ${isClickable ? "cursor-pointer" : ""}`}
+        onClick={handleCharacterClick}
+      >
+        <img
+          src={currentParts.eyes}
+          alt="おめめ"
+          className="absolute left-0 top-0 z-20 h-auto w-[300px]"
+        />
+        <img
+          src={currentParts.mouth}
+          alt="おくち"
+          className="absolute left-0 top-0 z-10 h-auto w-[300px]"
+        />
+        <img
+          src={currentParts.body}
+          alt="みわくのボディー"
+          className="block h-auto w-[300px]"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Character;

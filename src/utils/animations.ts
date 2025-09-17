@@ -13,7 +13,7 @@ export const pageVariants: Variants = {
     x: 0,
     transition: {
       type: "spring",
-      stiffness: 120,
+      stiffness: 100,
       damping: 10,
     },
   },
@@ -23,28 +23,9 @@ export const pageVariants: Variants = {
     x: -15,
     transition: {
       type: "spring",
-      stiffness: 120,
+      stiffness: 100,
       damping: 10,
       delay: 0.1,
     },
-  },
-};
-
-// 下記は現在未使用。
-export const questionVariants = {
-  initial: {
-    filter: "blur(10px)",
-    opacity: 0,
-    x: 20,
-  },
-  animate: {
-    filter: "none",
-    opacity: 1,
-    x: 0,
-  },
-  exit: {
-    filter: "blur(10px)",
-    opacity: 0,
-    x: -20,
   },
 };
