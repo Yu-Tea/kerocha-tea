@@ -28,7 +28,11 @@ function App() {
           </Routes>
         </AnimatePresence>
       </div>
-      <TeaTimeImage />
+
+      {/* /aboutページ以外でのみ表示 */}
+      <AnimatePresence>
+        {location.pathname !== "/about" && <TeaTimeImage />}
+      </AnimatePresence>
     </div>
   );
 }

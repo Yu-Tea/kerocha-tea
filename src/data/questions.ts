@@ -3,7 +3,7 @@ import { Question } from "../types/diagnosis";
 export const questions: Question[] = [
   {
     id: 1,
-    text: "今の{userName}さんにピッタリなお茶を作るから、3つの質問に答えてねぇ〜。\n今のキミの心は何を求めているのかな？",
+    text: "{userName}さんにピッタリなお茶を作るね。\n今のキミの心は何を求めているのかな？",
     options: [
       {
         id: "hue1",

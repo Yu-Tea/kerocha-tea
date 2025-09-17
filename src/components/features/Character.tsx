@@ -4,15 +4,18 @@ import type {
   Expressions,
   ExpressionParts,
 } from "../../types/character";
+import { getTimeBasedResponses } from "../../utils/timeUtils";
 
 const Character = ({
   mood = "normal",
-  dialogue = "初期セリフ",
+  dialogue = "いらっしゃ〜い！",
   isClickable = true,
+  onCharacterClick,
 }: CharacterProps) => {
   const [currentExpression, setCurrentExpression] = useState<
     "normal" | "happy" | "speak"
   >(mood);
+  const [currentDialogue, setCurrentDialogue] = useState(dialogue);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   // 表情の定義
@@ -34,48 +37,76 @@ const Character = ({
     },
   };
 
-  // クリック時の表情変化
-  const handleClick = () => {
-    if (!isClickable || isAnimating) return;
-
+  // セリフと表情を即時変更する関数
+  const changeDialogueAndMood = (
+    newDialogue: string,
+    newMood: "normal" | "happy" | "speak"
+  ) => {
+    // 即座に変更
+    setCurrentDialogue(newDialogue);
+    setCurrentExpression(newMood);
     setIsAnimating(true);
-    setCurrentExpression("happy");
 
-    // 1秒後に元の表情に戻す
+    // 指定時間後に元に戻す
     setTimeout(() => {
       setCurrentExpression(mood);
+      setCurrentDialogue(dialogue);
       setIsAnimating(false);
-    }, 1000);
+    }, 2500);
   };
 
-  // moodが変わったら表情を更新（アニメーション中でなければ）
+  // キャラクタークリック時の処理
+  const handleCharacterClick = () => {
+    if (!isClickable || isAnimating) return;
+
+    // 時間帯に応じた反応パターンを取得
+    const responses = getTimeBasedResponses();
+
+    // ランダムに反応パターンを選択
+    const randomResponse =
+      responses[Math.floor(Math.random() * responses.length)];
+    changeDialogueAndMood(randomResponse.dialogue, randomResponse.mood);
+
+    // 外部コールバックも実行
+    if (onCharacterClick) {
+      onCharacterClick();
+    }
+  };
+
+  // propsが変わったら更新
   useEffect(() => {
     if (!isAnimating) {
       setCurrentExpression(mood);
+      setCurrentDialogue(dialogue);
     }
-  }, [mood, isAnimating]);
+  }, [mood, dialogue, isAnimating]);
 
   const currentParts: ExpressionParts = expressions[currentExpression];
 
   return (
     <div className="">
-      {/* セリフ */}
-      {dialogue && (
-        <div className="mb-3 text-center text-lg font-bold text-secondary">
-          <p>{dialogue}</p>
+      {/* セリフ（アニメーションなし） */}
+      {currentDialogue && (
+        <div className="mb-3 w-[300px] text-center text-base font-bold text-secondary">
+          <p>{currentDialogue}</p>
         </div>
       )}
+
+      {/* キャラクター本体（クリック可能・アニメーションなし） */}
       <div
-        className={`relative inline-block ${isClickable ? "clickable" : ""} ${isAnimating ? "animating" : ""}`}
-        onClick={handleClick}
+        className={`relative inline-block ${isClickable ? "cursor-pointer" : ""}`}
+        onClick={handleCharacterClick}
       >
-        {/* 目 */}
-        <img src={currentParts.eyes} alt="おめめ" className="absolute left-0 top-0 z-20 h-auto w-[300px]" />
-
-        {/* 口 */}
-        <img src={currentParts.mouth} alt="おくち" className="absolute left-0 top-0 z-10 h-auto w-[300px]" />
-
-        {/* 体（ベース） */}
+        <img
+          src={currentParts.eyes}
+          alt="おめめ"
+          className="absolute left-0 top-0 z-20 h-auto w-[300px]"
+        />
+        <img
+          src={currentParts.mouth}
+          alt="おくち"
+          className="absolute left-0 top-0 z-10 h-auto w-[300px]"
+        />
         <img
           src={currentParts.body}
           alt="みわくのボディー"
