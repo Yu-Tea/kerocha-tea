@@ -27,6 +27,21 @@ const ResultPage = () => {
     navigate("/");
   };
 
+  const handleShareX = () => {
+    if (!result) return;
+    const baseUrl = `${window.location.origin}/shared`;
+    const params = new URLSearchParams({
+      hue: result.hue.toString(),
+      saturation: result.saturation.toString(),
+      brightness: result.brightness.toString(),
+      name: result.userName || "",
+    });
+    const shareUrl = `${baseUrl}?${params.toString()}`;
+    const text = `ケロチャにお茶を作ってもらったよ！\n#ケロチャのカラフルティータイム`;
+    const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}`;
+    window.open(xUrl, "_blank", "noopener,noreferrer");
+  };
+
   if (!result) {
     return (
       <div style={{ padding: "20px", textAlign: "center" }}>
@@ -62,7 +77,7 @@ const ResultPage = () => {
         <div className="relative">
           <img
             src={Tea}
-            alt="ケロチャのカラフルティータイム"
+            alt="お茶ができたよ！"
             className="absolute left-0 top-0 h-auto w-full"
             style={{
               filter: `hue-rotate(${result.hue}deg) saturate(${result.saturation}) brightness(${result.brightness}) blur(3px)`,
@@ -71,12 +86,10 @@ const ResultPage = () => {
           <img src={"/images/tea_bg.png"} alt="ケロチャ" className="" />
         </div>
         {/* ボタン */}
-        <div className="flex flex-col justify-center items-center gap-4 mb-4 sm:mb-10">
-          <Link to="/">
-            <Button variant="select-btn" onClick={handleRestart}>
-              Ｘで共有する！
-            </Button>
-          </Link>
+        <div className="mb-4 flex flex-col items-center justify-center gap-4 sm:mb-10">
+          <Button variant="select-btn" onClick={handleShareX}>
+            Ｘで共有する！
+          </Button>
           <Link to="/">
             <Button variant="select-btn" onClick={handleRestart}>
               ごちそうさま！

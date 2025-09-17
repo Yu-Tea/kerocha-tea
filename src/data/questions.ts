@@ -3,7 +3,7 @@ import { Question } from "../types/diagnosis";
 export const questions: Question[] = [
   {
     id: 1,
-    text: "今のキミの心が求めているのはどんな気持ち？",
+    text: "今の{userName}さんにピッタリなお茶を作るから、3つの質問に答えてねぇ〜。\n今のキミの心は何を求めているのかな？",
     options: [
       {
         id: "hue1",
@@ -39,7 +39,7 @@ export const questions: Question[] = [
   },
   {
     id: 2,
-    text: "そうなんだね。じゃあ、今のキミの元気はどのくらい？",
+    text: "そうなんだね！\nじゃあ、今のキミの元気はどのくらいなの？",
     options: [
       {
         id: "sat1",
@@ -60,7 +60,7 @@ export const questions: Question[] = [
   },
   {
     id: 3,
-    text: "最後の質問だよ。この後、どう過ごすの？",
+    text: "ふむふむ。じゃあ最後の質問だよ。\nこの後、どう過ごす予定なの〜？",
     options: [
       {
         id: "bright1",
