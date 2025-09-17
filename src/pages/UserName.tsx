@@ -1,78 +1,53 @@
 import { useUserName } from "../hooks/useUserName";
-import UserNameInput from "../components/common/UserNameInput";
+import UserNameInput from "../components/features/UserNameInput";
 import { useNavigate } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { pageVariants } from "../utils/animations";
-import { useState } from "react";
+import { useEffect } from "react";
 
 const UserName = () => {
-  const { userInfo, isLoading, saveUserName, clearUserName } = useUserName();
+  const { userInfo, isLoading } = useUserName();
   const navigate = useNavigate();
-  const [showInput, setShowInput] = useState(false);
 
-  // 「ちがうよ〜」を押したら新規入力画面に切り替え
-  const handleReject = () => {
-    clearUserName();
-    setShowInput(true);
-  };
+  // isLoadingが終わってからリダイレクト判定
+  useEffect(() => {
+    if (!isLoading && !userInfo?.name) {
+      navigate("/newusername", { replace: true });
+    }
+  }, [userInfo, isLoading, navigate]);
 
-  // 「名前を教える」時は即navigate
-  const handleNameSubmit = (name: string) => {
-    saveUserName(name);
-    navigate("/teatime");
-  };
+  if (isLoading) {
+    // ローディング中は何も表示しない
+    return null;
+  }
 
-  // 既存ユーザー確認で「そうだよ〜」を押したら進む
+  if (!userInfo?.name) {
+    // リダイレクト中も何も表示しない
+    return null;
+  }
+
   const handleConfirm = () => {
     navigate("/teatime");
   };
 
-  if (isLoading) {
-    return (
-      <motion.div
-        variants={pageVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        className="text-center"
-      >
-        <p>読み込み中...</p>
-      </motion.div>
-    );
-  }
+  const handleReject = () => {
+    navigate("/newusername");
+  };
 
-  // 既存ユーザー確認画面 or 新規入力画面をAnimatePresenceで切り替え
   return (
-    <AnimatePresence mode="wait">
-      {userInfo?.name && !showInput ? (
-        <motion.div
-          key="confirm"
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          className="flex flex-auto flex-col items-center justify-center"
-        >
-          <UserNameInput
-            existingName={userInfo.name}
-            onExistingNameConfirm={handleConfirm}
-            onExistingNameReject={handleReject}
-            onNameSubmit={() => {}} // ダミー
-          />
-        </motion.div>
-      ) : (
-        <motion.div
-          key="input"
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          className="flex flex-auto flex-col items-center justify-center"
-        >
-          <UserNameInput onNameSubmit={handleNameSubmit} />
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="flex flex-auto flex-col items-center justify-center"
+    >
+      <UserNameInput
+        existingName={userInfo.name}
+        onExistingNameConfirm={handleConfirm}
+        onExistingNameReject={handleReject}
+      />
+    </motion.div>
   );
 };
 

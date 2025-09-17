@@ -5,8 +5,9 @@ import About from "./pages/About";
 import TeaTime from "./pages/TeaTime";
 import Result from "./pages/Result";
 import Shared from "./pages/Shared";
-import TeaTimeImage from "./components/layout/TeaTimeImage.tsx";
+import TeaTimeImage from "./components/features/TeaTimeImage.tsx";
 import UserName from "./pages/UserName.tsx";
+import NewUserName from "./pages/NewUserName"; // 追加
 
 function App() {
   const location = useLocation();
@@ -16,10 +17,11 @@ function App() {
       {/* ページ遷移でアニメーションする部分 */}
       <div className="flex-auto">
         <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
+          <Routes location={location} key={location.key}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/username" element={<UserName />} />
+            <Route path="/newusername" element={<NewUserName />} /> 
             <Route path="/teatime" element={<TeaTime />} />
             <Route path="/result" element={<Result />} />
             <Route path="/shared" element={<Shared />} />

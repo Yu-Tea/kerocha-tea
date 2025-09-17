@@ -66,9 +66,9 @@ export const useDiagnosis = () => {
       // 診断結果を作成
       const result: DiagnosisResult = {
         hue: newAnswers.hue || 100,
-        saturation: newAnswers.saturation || 5,
-        brightness: newAnswers.brightness || 5,
-        selectedOptions: newSelectedOptions, //これもいらないかも？後で要検討
+        saturation: newAnswers.saturation || 2,
+        brightness: newAnswers.brightness || 2,
+        selectedOptions: newSelectedOptions, //選択肢の結果で追加のセリフ入れないなら後で削除でいいかも
         userName: userName, // ユーザー名を結果に含める
       };
 
