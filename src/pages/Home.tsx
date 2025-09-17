@@ -23,27 +23,25 @@ const Home = () => {
   };
 
   return (
-    <>
-      <div className="flex flex-col items-center justify-center">
-        <div className="mb-5">
-          <ColorfulLogo />
-        </div>
-        <motion.div
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          className="mb-4 flex flex-col items-center justify-center gap-4 sm:mb-10"
-        >
-          <Button variant="select-btn" onClick={handleStart}>
-            お茶を作ってもらう
-          </Button>
-          <Link to="/about">
-            <Button variant="select-btn">はじめましての方へ</Button>
-          </Link>
-        </motion.div>
+    <div>
+      <div className="mb-5">
+        <ColorfulLogo />
       </div>
-    </>
+      <motion.div
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="mb-4 flex flex-col items-center justify-center gap-4 sm:mb-10"
+      >
+        <Button variant="select-btn" onClick={handleStart}>
+          お茶を作ってもらう
+        </Button>
+        <Link to="/about">
+          <Button variant="select-btn">はじめましての方へ</Button>
+        </Link>
+      </motion.div>
+    </div>
   );
 };
 

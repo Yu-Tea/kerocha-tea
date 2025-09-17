@@ -6,7 +6,7 @@ import { pageVariants } from "../utils/animations";
 import { useEffect } from "react";
 
 const NewUserName = () => {
-  const { saveUserName,clearUserName } = useUserName();
+  const { saveUserName, clearUserName } = useUserName();
   const navigate = useNavigate();
 
   // コンポーネントがマウントされた時にユーザー名をクリア
@@ -25,7 +25,6 @@ const NewUserName = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="flex flex-auto flex-col items-center justify-center"
     >
       <NewUserNameInput onNameSubmit={handleNameSubmit} />
     </motion.div>

@@ -57,7 +57,6 @@ const ResultPage = () => {
         initial="initial"
         animate="animate"
         exit="exit"
-        className="flex flex-col items-center justify-center"
       >
         <div className="bubble">
           {result.userName ? (

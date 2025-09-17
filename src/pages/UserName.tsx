@@ -40,7 +40,6 @@ const UserName = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="flex flex-auto flex-col items-center justify-center"
     >
       <UserNameInput
         existingName={userInfo.name}
