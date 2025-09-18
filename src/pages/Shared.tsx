@@ -18,8 +18,8 @@ const Shared = () => {
     [location.search]
   );
   const hue = getParam(params, "hue", 100);
-  const sat = getParam(params, "saturation", 2);
-  const bri = getParam(params, "brightness", 2);
+  const sat = getParam(params, "sat", 2);
+  const bri = getParam(params, "bri", 2);
   const name = params.get("name") || "";
 
   return (

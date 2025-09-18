@@ -18,11 +18,11 @@ export const pageCharacterSettings: Record<string, PageCharacterSetting> = {
     mood: "happy",
   },
   "/result": {
-    dialogue: "お待たせ！",
+    dialogue: "お待たせケロ〜ン",
     mood: "speak",
   },
   "/shared": {
-    dialogue: "こんなお茶だったねぇ〜",
+    dialogue: "また飲みに来てほしいなぁ〜",
     mood: "happy",
   },
   // デフォルト設定
