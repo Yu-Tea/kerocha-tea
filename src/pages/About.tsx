@@ -16,7 +16,7 @@ const About = () => {
           {/* ケロチャ紹介文 */}
           <div className="w-auto rounded-xl bg-white px-4 py-6 sm:w-1/2">
             <img
-              src="/public/images/logo_cup.png"
+              src={"/images/logo_cup.png"}
               alt="ケロチャ"
               className="float-left mr-3 max-w-[100px]"
             />
@@ -28,7 +28,7 @@ const About = () => {
           {/* 謎の開発者Y紹介文 */}
           <div className="w-auto rounded-xl bg-white px-4 py-6 sm:w-1/2">
             <img
-              src="/public/images/logo_cup.png"
+              src={"/images/logo_cup.png"}
               alt="ケロチャ"
               className="float-left mr-3 max-w-[100px]"
             />
