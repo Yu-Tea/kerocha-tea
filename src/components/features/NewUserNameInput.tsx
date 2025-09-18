@@ -26,7 +26,7 @@ const NewUserNameInput = ({ onNameSubmit }: NewUserNameInputProps) => {
 
   return (
     <div className="flex flex-auto flex-col items-center justify-center">
-      <div className="bubble">
+      <div className="bubble mb-8">
         <p>はじめましてかなぁ？</p>
         <p>ボクはケロチャだよ！</p>
         <p>まずはキミのお名前を教えて〜！</p>

@@ -12,7 +12,7 @@ const UserNameInput = ({
   onExistingNameReject,
 }: UserNameInputProps) => (
   <div className="flex flex-auto flex-col items-center justify-center">
-    <div className="bubble">
+    <div className="bubble mb-8">
       <p>ボクのお茶を飲みにきてくれてありがと〜。</p>
       <p>
         <span className="text-secondary">{existingName}</span>

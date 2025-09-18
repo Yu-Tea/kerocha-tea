@@ -2,9 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { questions } from "../data/questions";
 import { DiagnosisResult } from "../types/diagnosis";
+import { getTemplatesCount } from "../utils/messageGenerator";
 
 // ランダム値生成
-export const getRandomInRange = (min: number, max: number, decimals: number = 0): number => {
+export const getRandomInRange = (
+  min: number,
+  max: number,
+  decimals: number = 0
+): number => {
   const random = Math.random() * (max - min) + min;
   // 小数点第一位までの数値にするために、小数点右にずらす→四捨五入で小数点以下を取り除く→小数点の位置を戻すの処理
   return Math.round(random * Math.pow(10, decimals)) / Math.pow(10, decimals);
@@ -17,7 +22,11 @@ export const useDiagnosis = () => {
     saturation?: number;
     brightness?: number;
   }>({});
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [messageParts, setMessageParts] = useState<{
+    mood?: string;
+    energy?: string;
+    lifestyle?: string;
+  }>({});
   const navigate = useNavigate();
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -27,9 +36,17 @@ export const useDiagnosis = () => {
     const option = currentQuestion.options.find((opt) => opt.id === optionId);
     if (!option) return;
 
-    // 選択肢を記録
-    const newSelectedOptions = [...selectedOptions, optionId];
-    setSelectedOptions(newSelectedOptions);
+    // messagePartsを更新
+    const newMessageParts = { ...messageParts };
+    if (option.messagePart) {
+      if (option.messagePart.mood)
+        newMessageParts.mood = option.messagePart.mood;
+      if (option.messagePart.energy)
+        newMessageParts.energy = option.messagePart.energy;
+      if (option.messagePart.lifestyle)
+        newMessageParts.lifestyle = option.messagePart.lifestyle;
+    }
+    setMessageParts(newMessageParts);
 
     // ランダム値で回答を生成
     const newAnswers = { ...answers };
@@ -45,14 +62,14 @@ export const useDiagnosis = () => {
       newAnswers.saturation = getRandomInRange(
         option.saturationRange.min,
         option.saturationRange.max,
-      1 // 小数点第一位まで
+        1 // 小数点第一位まで
       );
     }
     if (option.brightnessRange) {
       newAnswers.brightness = getRandomInRange(
         option.brightnessRange.min,
         option.brightnessRange.max,
-      1 // 小数点第一位まで
+        1 // 小数点第一位まで
       );
     }
 
@@ -63,15 +80,19 @@ export const useDiagnosis = () => {
       const userInfo = localStorage.getItem("userInfo");
       const userName = userInfo ? JSON.parse(userInfo).name : "";
 
+      // テンプレートindexをランダムで決定
+      const templateCount = getTemplatesCount();
+      const messageTemplateIndex = Math.floor(Math.random() * templateCount);
+
       // 診断結果を作成
       const result: DiagnosisResult = {
         hue: newAnswers.hue || 100,
         saturation: newAnswers.saturation || 2,
         brightness: newAnswers.brightness || 2,
-        selectedOptions: newSelectedOptions, //選択肢の結果で追加のセリフ入れないなら後で削除でいいかも
-        userName: userName, // ユーザー名を結果に含める
+        userName: userName,
+        messageParts: newMessageParts,
+        messageTemplateIndex,
       };
-
       // 結果をローカルストレージに保存
       localStorage.setItem("diagnosisResult", JSON.stringify(result));
       navigate("/result");
@@ -85,7 +106,6 @@ export const useDiagnosis = () => {
   const resetDiagnosis = () => {
     setCurrentQuestionIndex(0);
     setAnswers({});
-    setSelectedOptions([]);
   };
 
   return {

@@ -4,7 +4,7 @@
 
 @layer components {
   .bubble {
-    @apply mb-8 max-w-[470px] rounded-3xl bg-white pl-6 pr-5 py-6 text-base font-bold;
+    @apply max-w-[470px] rounded-3xl bg-white pl-6 pr-5 py-6 text-base font-bold;
   }
 }
 
