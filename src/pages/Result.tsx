@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { pageVariants } from "../utils/animations";
 import { Button } from "../components/common/Button";
 import Tea from "/public/images/tea.svg";
+import { generateResultMessage } from "../utils/messageGenerator";
 
 const ResultPage = () => {
   const [result, setResult] = useState<DiagnosisResult | null>(null);
@@ -32,8 +33,8 @@ const ResultPage = () => {
     const baseUrl = `${window.location.origin}/shared`;
     const params = new URLSearchParams({
       hue: result.hue.toString(),
-      saturation: result.saturation.toString(),
-      brightness: result.brightness.toString(),
+      sat: result.saturation.toString(),
+      bri: result.brightness.toString(),
       name: result.userName || "",
     });
     const shareUrl = `${baseUrl}?${params.toString()}`;
@@ -58,7 +59,7 @@ const ResultPage = () => {
         animate="animate"
         exit="exit"
       >
-        <div className="bubble">
+        <div className="bubble mb-3">
           {result.userName ? (
             <>
               <span className="text-secondary">{result.userName}</span>さん
@@ -68,7 +69,16 @@ const ResultPage = () => {
           )}
           のお茶ができたよ〜！
           <p>
-            H：{result.hue}/S：{result.saturation}/B：{result.brightness}
+            {result.messageParts
+              ? generateResultMessage(
+                  {
+                    mood: result.messageParts.mood ?? "",
+                    energy: result.messageParts.energy ?? "",
+                    lifestyle: result.messageParts.lifestyle ?? "",
+                  },
+                  result.messageTemplateIndex
+                )
+              : ""}
           </p>
         </div>
 
@@ -82,10 +92,10 @@ const ResultPage = () => {
               filter: `hue-rotate(${result.hue}deg) saturate(${result.saturation}) brightness(${result.brightness}) blur(3px)`,
             }}
           />
-          <img src={"/images/tea_bg.png"} alt="ケロチャ" className="" />
+          <img src={"/images/tea_bg.png"} alt="ティーカップ" className="" />
         </div>
         {/* ボタン */}
-        <div className="mb-4 flex flex-col items-center justify-center gap-4 sm:mb-10">
+        <div className="mb-4 mt-1 flex flex-col items-center justify-center gap-4 sm:mb-10">
           <Button variant="select-btn" onClick={handleShareX}>
             Ｘで共有する！
           </Button>

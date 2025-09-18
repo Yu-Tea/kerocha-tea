@@ -37,7 +37,7 @@ const TeaTimePage = () => {
         >
           <div className="mb-4 flex flex-col items-center justify-center sm:mb-10">
             {/* 質問と選択肢 */}
-            <div className="bubble">{renderQuestionText()}</div>
+            <div className="bubble mb-8">{renderQuestionText()}</div>
             <div className="flex flex-col gap-y-5">
               {currentQuestion.options.map((option) => (
                 <Button

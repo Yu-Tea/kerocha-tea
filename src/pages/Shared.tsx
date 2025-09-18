@@ -18,8 +18,8 @@ const Shared = () => {
     [location.search]
   );
   const hue = getParam(params, "hue", 100);
-  const saturation = getParam(params, "saturation", 2);
-  const brightness = getParam(params, "brightness", 2);
+  const sat = getParam(params, "saturation", 2);
+  const bri = getParam(params, "brightness", 2);
   const name = params.get("name") || "";
 
   return (
@@ -31,7 +31,7 @@ const Shared = () => {
         exit="exit"
         className="flex flex-col items-center justify-center"
       >
-        <div className="bubble">
+        <div className="bubble mb-3">
           <p>
             {name ? (
               <>
@@ -40,7 +40,7 @@ const Shared = () => {
             ) : (
               "あなた"
             )}
-            に作ったお茶はこんな感じだったよ！
+            に作ったお茶はこんな感じだったよ〜！
           </p>
         </div>
         {/* お茶の画像部分 */}
@@ -50,7 +50,7 @@ const Shared = () => {
             alt="こんなお茶を作ったよ！"
             className="absolute left-0 top-0 h-auto w-full"
             style={{
-              filter: `hue-rotate(${hue}deg) saturate(${saturation}) brightness(${brightness}) blur(3px)`,
+              filter: `hue-rotate(${hue}deg) saturate(${sat}) brightness(${bri}) blur(3px)`,
             }}
           />
           <img src={"/images/tea_bg.png"} alt="ケロチャ" className="" />
