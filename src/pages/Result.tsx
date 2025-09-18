@@ -37,7 +37,7 @@ const ResultPage = () => {
       name: result.userName || "",
     });
     const shareUrl = `${baseUrl}?${params.toString()}`;
-    const text = `ケロチャにお茶を作ってもらったよ！\n#ケロチャのカラフルティータイム`;
+    const text = `ケロチャにお茶を作ってもらったよ！\n#ケロチャのカラフルティータイム\n`;
     const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}`;
     window.open(xUrl, "_blank", "noopener,noreferrer");
   };
