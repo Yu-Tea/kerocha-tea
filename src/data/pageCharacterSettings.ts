@@ -18,7 +18,7 @@ export const pageCharacterSettings: Record<string, PageCharacterSetting> = {
     mood: "happy",
   },
   "/result": {
-    dialogue: "お待たせ！ティータイムだよ〜",
+    dialogue: "お待たせ！",
     mood: "speak",
   },
   "/shared": {
