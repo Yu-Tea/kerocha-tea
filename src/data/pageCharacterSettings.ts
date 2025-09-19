@@ -1,29 +1,37 @@
 export interface PageCharacterSetting {
   dialogue: string;
-  mood: "normal" | "happy" | "speak";
+  mood:
+    | "normal"
+    | "smile1"
+    | "smile2"
+    | "happy"
+    | "speak1"
+    | "speak2"
+    | "teatime"
+    | "result";
 }
 
 // セリフは15文字以内で
 export const pageCharacterSettings: Record<string, PageCharacterSetting> = {
   "/username": {
     dialogue: "また来てくれたんだね〜！",
-    mood: "speak",
+    mood: "speak2",
   },
   "/newusername": {
     dialogue: "ようこそ〜！",
-    mood: "happy",
+    mood: "smile1",
   },
   "/teatime": {
     dialogue: "質問に答えてね〜",
-    mood: "happy",
+    mood: "teatime",
   },
   "/result": {
     dialogue: "お待たせケロ〜ン",
-    mood: "speak",
+    mood: "result",
   },
   "/shared": {
     dialogue: "また飲みに来てほしいなぁ〜",
-    mood: "happy",
+    mood: "result",
   },
   // デフォルト設定
   default: {

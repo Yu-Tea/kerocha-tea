@@ -13,7 +13,14 @@ const Character = ({
   onCharacterClick,
 }: CharacterProps) => {
   const [currentExpression, setCurrentExpression] = useState<
-    "normal" | "happy" | "speak"
+    | "normal"
+    | "smile1"
+    | "smile2"
+    | "happy"
+    | "speak1"
+    | "speak2"
+    | "teatime"
+    | "result"
   >(mood);
   const [currentDialogue, setCurrentDialogue] = useState(dialogue);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
@@ -25,22 +32,55 @@ const Character = ({
       mouth: "/images/k_mouth_normal.png",
       body: "/images/k_body_normal.png",
     },
-    happy: {
+    smile1: {
       eyes: "/images/k_eye_smile.png",
-      mouth: "/images/k_mouth_laugh.png",
-      body: "/images/k_body_banzai.png",
+      mouth: "/images/k_mouth_normal.png",
+      body: "/images/k_body_up.png",
     },
-    speak: {
+    smile2: {
+      eyes: "/images/k_eye_smile.png",
+      mouth: "/images/k_mouth_munya.png",
+      body: "/images/k_body_down.png",
+    },
+    happy: {
       eyes: "/images/k_eye_itome.png",
-      mouth: "/images/k_mouth_speak.png",
-      body: "/images/k_body_think.png",
+      mouth: "/images/k_mouth_munya.png",
+      body: "/images/k_body_touch.png",
+    },
+    speak1: {
+      eyes: "/images/k_eye_normal.png",
+      mouth: "/images/k_mouth_open.png",
+      body: "/images/k_body_down.png",
+    },
+    speak2: {
+      eyes: "/images/k_eye_normal.png",
+      mouth: "/images/k_mouth_open.png",
+      body: "/images/k_body_up.png",
+    },
+    teatime: {
+      eyes: "/images/k_eye_normal.png",
+      mouth: "/images/k_mouth_open.png",
+      body: "/images/k_body_question.png",
+    },
+    result: {
+      eyes: "/images/k_eye_smile.png",
+      mouth: "/images/k_mouth_open.png",
+      body: "/images/k_body_up.png",
     },
   };
 
   // セリフと表情を即時変更する関数
   const changeDialogueAndMood = (
     newDialogue: string,
-    newMood: "normal" | "happy" | "speak"
+    newMood:
+      | "normal"
+      | "smile1"
+      | "smile2"
+      | "happy"
+      | "speak1"
+      | "speak2"
+      | "teatime"
+      | "result"
   ) => {
     // 即座に変更
     setCurrentDialogue(newDialogue);
@@ -52,7 +92,7 @@ const Character = ({
       setCurrentExpression(mood);
       setCurrentDialogue(dialogue);
       setIsAnimating(false);
-    }, 2500);
+    }, 2200);
   };
 
   // キャラクタークリック時の処理
