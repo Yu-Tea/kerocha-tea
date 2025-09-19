@@ -1,5 +1,13 @@
 export interface CharacterProps {
-  mood?: "normal" | "happy" | "speak";
+  mood?:
+    | "normal"
+    | "smile1"
+    | "smile2"
+    | "happy"
+    | "speak1"
+    | "speak2"
+    | "teatime"
+    | "result";
   dialogue?: string;
   isClickable?: boolean;
   onCharacterClick?: () => void;
@@ -12,12 +20,28 @@ export interface ExpressionParts {
 }
 
 export type Expressions = {
-  [key in "normal" | "happy" | "speak"]: ExpressionParts;
+  [key in
+    | "normal"
+    | "smile1"
+    | "smile2"
+    | "happy"
+    | "speak1"
+    | "speak2"
+    | "teatime"
+    | "result"]: ExpressionParts;
 };
 
 export interface CharacterResponse {
   dialogue: string;
-  mood: "normal" | "happy" | "speak";
+  mood:
+    | "normal"
+    | "smile1"
+    | "smile2"
+    | "happy"
+    | "speak1"
+    | "speak2"
+    | "teatime"
+    | "result";
 }
 
 export interface TimeBasedResponses {

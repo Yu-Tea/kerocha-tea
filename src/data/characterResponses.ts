@@ -2,36 +2,36 @@ import type { TimeBasedResponses } from "../types/character";
 
 // セリフは15文字以内にすること
 export const timeBasedResponses: TimeBasedResponses = {
-  // 5〜11時
+  // 5〜11時台
   morning: [
-    { dialogue: "おはようケロ〜！", mood: "happy" },
-    { dialogue: "今日も一日がんばろうね〜", mood: "happy" },
-    { dialogue: "朝ごはんはもう食べた〜？", mood: "speak" },
-    { dialogue: "えへへ〜", mood: "speak" },
+    { dialogue: "おはようケロ〜！", mood: "speak2" },
+    { dialogue: "今日も一日がんばろうね〜", mood: "smile1" },
+    { dialogue: "朝ごはんはもう食べた〜？", mood: "speak1" },
+    { dialogue: "えへへ〜", mood: "smile2" },
     { dialogue: "ケロォ〜ン", mood: "happy" },
   ],
-  // 12〜16時
+  // 12〜16時台
   afternoon: [
-    { dialogue: "お疲れ様ケロ〜", mood: "speak" },
-    { dialogue: "アフタヌーンティーの時間だね！", mood: "happy" },
-    { dialogue: "午後も頑張るケロ〜", mood: "speak" },
-    { dialogue: "えへへ〜", mood: "speak" },
+    { dialogue: "ちょっと休憩するケロ？", mood: "speak1" },
+    { dialogue: "アフタヌーンティーの時間だ〜", mood: "smile1" },
+    { dialogue: "お昼からも頑張るケロ〜", mood: "speak2" },
+    { dialogue: "えへへ〜", mood: "smile2" },
     { dialogue: "ケロォ〜ン", mood: "happy" },
   ],
-  // 17〜21時
+  // 17〜21時台
   evening: [
-    { dialogue: "もう夜なんだねぇ", mood: "speak" },
-    { dialogue: "今日も一日頑張ったケロ！", mood: "happy" },
-    { dialogue: "今日の晩ごはんはなぁに？", mood: "speak" },
-    { dialogue: "えへへ〜", mood: "speak" },
+    { dialogue: "おつかれさま〜", mood: "speak2" },
+    { dialogue: "今日も一日頑張ったケロ！", mood: "smile1" },
+    { dialogue: "今日の晩ごはんはなぁに？", mood: "speak1" },
+    { dialogue: "えへへ〜", mood: "smile2" },
     { dialogue: "ケロォ〜ン", mood: "happy" },
   ],
-  // 22〜4時
+  // 22〜4時台
   night: [
-    { dialogue: "寝る前に一杯いかがケロ？", mood: "speak" },
-    { dialogue: "もう寝る時間かなぁ？", mood: "speak" },
-    { dialogue: "夜ふかしに気をつけてねぇ", mood: "speak" },
-    { dialogue: "えへへ〜", mood: "speak" },
+    { dialogue: "お休み前のティーもいいよねぇ", mood: "smile1" },
+    { dialogue: "もう寝る時間かなぁ？", mood: "speak1" },
+    { dialogue: "夜ふかしに気をつけてねぇ", mood: "speak1" },
+    { dialogue: "えへへ〜", mood: "smile2" },
     { dialogue: "ケロォ〜ン", mood: "happy" },
   ],
 };
