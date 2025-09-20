@@ -13,7 +13,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center gap-x-2 px-4 py-5 lg:flex-row">
+    <div className="mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center gap-x-2 px-4 py-5 sm:px-20 lg:flex-row">
       {/* ページ遷移でアニメーションする箇所 */}
       <div className="flex flex-auto items-center justify-center">
         <AnimatePresence mode="wait">

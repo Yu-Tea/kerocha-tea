@@ -10,7 +10,7 @@ export const questions: Question[] = [
         text: "もっと頑張りたい",
         hueRange: { min: 0, max: 40 },
         messagePart: {
-          mood: "をしっかり頑張れるよう",
+          mood: "しっかり頑張れる",
         },
       },
       {
@@ -18,7 +18,7 @@ export const questions: Question[] = [
         text: "ワクワクしたい",
         hueRange: { min: 50, max: 70 },
         messagePart: {
-          mood: "をワクワクして過ごせる",
+          mood: "ワクワクして過ごせる",
         },
       },
       {
@@ -26,7 +26,7 @@ export const questions: Question[] = [
         text: "リフレッシュしたい",
         hueRange: { min: 90, max: 140 },
         messagePart: {
-          mood: "で心も体もリフレッシュできる",
+          mood: "心も体もリフレッシュできる",
         },
       },
       {
@@ -34,7 +34,7 @@ export const questions: Question[] = [
         text: "静かにすごしたい",
         hueRange: { min: 190, max: 230 },
         messagePart: {
-          mood: "で静かなひとときを楽しめる",
+          mood: "静かなひとときを楽しめる",
         },
       },
       {
@@ -42,7 +42,7 @@ export const questions: Question[] = [
         text: "フシギを感じたい",
         hueRange: { min: 250, max: 275 },
         messagePart: {
-          mood: "でフシギな体験に出会える",
+          mood: "フシギな体験に出会える",
         },
       },
       {
@@ -50,7 +50,7 @@ export const questions: Question[] = [
         text: "優しくなりたい",
         hueRange: { min: 290, max: 350 },
         messagePart: {
-          mood: "を優しい気持ちで過ごせる",
+          mood: "優しい気持ちで過ごせる",
         },
       },
     ],
@@ -94,7 +94,7 @@ export const questions: Question[] = [
         text: "やること盛りだくさん！",
         brightnessRange: { min: 2.3, max: 3.0 },
         messagePart: {
-          lifestyle: "の忙しい時間",
+          lifestyle: "忙しくっても",
         },
       },
       {
@@ -102,7 +102,7 @@ export const questions: Question[] = [
         text: "いつも通りかな〜",
         brightnessRange: { min: 1.6, max: 2.0 },
         messagePart: {
-          lifestyle: "の時間",
+          lifestyle: "これから",
         },
       },
       {
@@ -110,7 +110,7 @@ export const questions: Question[] = [
         text: "ゆっくり休むつもり",
         brightnessRange: { min: 1.0, max: 1.4 },
         messagePart: {
-          lifestyle: "のお休みタイム",
+          lifestyle: "お休みタイムは",
         },
       },
     ],

@@ -6,13 +6,13 @@ interface MessageParts {
 
 const templates = [
   (parts: MessageParts) =>
-    `${parts.energy}キミが、これから${parts.lifestyle}${parts.mood}ように願いを込めたお茶だよ。`,
+    `${parts.energy}キミが、${parts.lifestyle}${parts.mood}ように願いを込めたお茶だよ。`,
   (parts: MessageParts) =>
-    `${parts.energy}キミが、これから${parts.lifestyle}${parts.mood}ように特別なお茶をブレンドしたよ〜。`,
+    `${parts.energy}キミが、${parts.lifestyle}${parts.mood}ように特別なお茶をブレンドしたよ〜。`,
   (parts: MessageParts) =>
-    `${parts.energy}キミが、これから${parts.lifestyle}${parts.mood}ように心を込めて作ったお茶だよ。`,
+    `${parts.energy}キミが、${parts.lifestyle}${parts.mood}ように心を込めて作ったお茶だよ。`,
   (parts: MessageParts) =>
-    `${parts.energy}キミが、これから${parts.lifestyle}${parts.mood}ようにおまじないをかけたお茶だよ〜。`,
+    `${parts.energy}キミが、${parts.lifestyle}${parts.mood}ようにおまじないをかけたお茶だよ〜。`,
 ];
 
 export const generateResultMessage = (

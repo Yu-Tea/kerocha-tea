@@ -58,9 +58,7 @@ const Shared = () => {
         {/* ボタン */}
         <div className="mb-4 flex flex-col items-center justify-center gap-4 sm:mb-10">
           <Link to="/">
-            <Button variant="select-btn">
-              最初のページへ
-            </Button>
+            <Button variant="green-btn">TOPページはこちら</Button>
           </Link>
         </div>
       </motion.div>
