@@ -3,34 +3,34 @@ import { Button } from "../components/common/Button";
 
 const About = () => {
   return (
-    <div className="flex max-w-3xl flex-col items-center text-sm">
+    <div className="flex max-w-3xl flex-col items-center py-4 text-sm sm:py-8">
       <div>
         <h1 className="mb-4 text-center text-2xl font-bold text-secondary">
           はじめましての方へ
         </h1>
-
-        <div className="mb-10">
+        <div>
           ようこそ。ケロチャの開発者Ｙです。この度、うちのケロチャがお茶作りにハマり、色んな人に飲んでもらいたいというので、ティータイムの場を設けさせていただきました。どんな色のお茶になるかは貴方とケロチャ次第です。ティーカップの中の小さな芸術を是非ご賞味ください。
         </div>
-        <div className="flex flex-col gap-4 sm:flex-row">
+
+        <div className="my-10 flex flex-col gap-4 sm:flex-row">
           {/* ケロチャ紹介文 */}
           <div className="w-auto rounded-xl bg-white px-4 py-6 sm:w-1/2">
             <img
-              src={"/images/logo_cup.png"}
+              src={"/images/about01.png"}
               alt="ケロチャ"
-              className="float-left mr-3 max-w-[100px]"
+              className="float-left mr-3 mt-1"
             />
             <div>
               <p className="mb-1 text-lg font-bold text-secondary">ケロチャ</p>
-              謎の開発者Ｙによって生み出されたケロ型ロボット。フルネームはピョン・ケロォン・ケロチャ。身長最大96cm、体重最大68kg。人のお世話をしたり、お話ししたり、なでてもらうのが大好き。
+              謎の開発者Ｙによって生み出されたケロ型ロボット。フルネームはピョン・ケロォン・ケロチャ。身長最大96cm、体重最大68kg。人のお世話をしたりお話するのが大好き。知らないことを知るのも大好き。
             </div>
           </div>
           {/* 謎の開発者Y紹介文 */}
           <div className="w-auto rounded-xl bg-white px-4 py-6 sm:w-1/2">
             <img
-              src={"/images/logo_cup.png"}
+              src={"/images/about02.png"}
               alt="ケロチャ"
-              className="float-left mr-3 max-w-[100px]"
+              className="float-left mr-3 mt-1"
             />
             <div>
               <p className="mb-1 text-lg font-bold text-secondary">
@@ -40,15 +40,55 @@ const About = () => {
             </div>
           </div>
         </div>
+        {/* 質問コーナー */}
+        <div className="mb-12">
+          <h2 className="mb-4 text-center text-xl font-bold text-secondary">
+            なぜなに質問コーナー
+          </h2>
+          <div className="mb-3 flex">
+            <span className="items-top mr-2 flex size-7 min-w-7 justify-center rounded-full bg-secondary-300 text-center font-bold text-white">
+              Ｑ
+            </span>
+            あのお茶って何なんですか？なんであんな様々な色を作り出せるのですか？
+          </div>
+          <div className="mb-6 flex">
+            <span className="items-top mr-2 flex size-7 min-w-7 justify-center rounded-full bg-primary-300 text-center font-bold text-white">
+              Ａ
+            </span>
+            ケロチャがお茶淹れを研究しているうちに作れるようになったそうです。茶葉とかハーブとか色々ブレンドしてるんだと思います。知らんけど。
+          </div>
 
-        <h2 className="mb-2 mt-10 text-center text-xl font-bold text-secondary">
-          なぜなに質問コーナー
-        </h2>
-        <div>質問と回答を2・3個くらい乗せる？</div>
+          <div className="mb-3 flex">
+            <span className="items-top mr-2 flex size-7 min-w-7 justify-center rounded-full bg-secondary-300 text-center font-bold text-white">
+              Ｑ
+            </span>
+            なんか…すごい色のお茶が出てきたんですけど…飲んで大丈夫なんですか？
+          </div>
+          <div className="mb-6 flex">
+            <span className="items-top mr-2 flex size-7 min-w-7 justify-center rounded-full bg-primary-300 text-center font-bold text-white">
+              Ａ
+            </span>
+            ケロチャの感性が人間とは多少異なるせいですが、変な顔は向けないでやってください。お体には問題ありませんので、にっこり微笑んでグイッとお飲みください。
+          </div>
+
+          <div className="mb-3 flex">
+            <span className="items-top mr-2 flex size-7 min-w-7 justify-center rounded-full bg-secondary-300 text-center font-bold text-white">
+              Ｑ
+            </span>
+            ケロチャに触っていいですか？
+          </div>
+          <div className="mb-6 flex">
+            <span className="items-top mr-2 flex size-7 min-w-7 justify-center rounded-full bg-primary-300 text-center font-bold text-white">
+              Ａ
+            </span>
+            ケロチャは人間になでられると喜びますのでご自由にどうぞ。ボディーは頑丈ですが優しくお触りください。なお抱き上げるのは腕力に自信のある方のみでお願いします。
+          </div>
+        </div>
       </div>
       <Link to="/">
-        <Button variant="select-btn">戻る</Button>
+        <Button variant="green-btn">TOPページへ戻る</Button>
       </Link>
+
       {/* フッター */}
       <div className="mt-10 flex w-full flex-col items-center justify-center gap-3 border-t border-stone-300 pt-5">
         <div className="text-center">
@@ -61,7 +101,7 @@ const About = () => {
             rel="noopener noreferrer"
           >
             <svg
-              className="fill-stone-500 hover:fill-secondary"
+              className="fill-primary hover:fill-primary-300"
               xmlns="http://www.w3.org/2000/svg"
               width="26"
               height="26"
@@ -76,7 +116,7 @@ const About = () => {
             rel="noopener noreferrer"
           >
             <svg
-              className="fill-stone-500 hover:fill-secondary"
+              className="fill-primary hover:fill-primary-300"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               width="26"

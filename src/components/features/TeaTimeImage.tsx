@@ -23,7 +23,7 @@ const TeaTimeImage = () => {
             damping: 12,
             delay: 0.3,
           }}
-          className="mr-2 hidden sm:block"
+          className="mr-2 hidden sm:block h-auto w-[130px]"
         >
           <img src={"/images/table.png"} alt="テーブル" />
         </motion.div>

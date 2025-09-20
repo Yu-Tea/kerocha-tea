@@ -5,7 +5,7 @@ export const timeBasedResponses: TimeBasedResponses = {
   // 5〜11時台
   morning: [
     { dialogue: "おはようケロ〜！", mood: "speak2" },
-    { dialogue: "今日も一日がんばろうね〜", mood: "smile1" },
+    { dialogue: "今日も一日頑張ろうね〜", mood: "smile1" },
     { dialogue: "朝ごはんはもう食べた〜？", mood: "speak1" },
     { dialogue: "えへへ〜", mood: "smile2" },
     { dialogue: "ケロォ〜ン", mood: "happy" },

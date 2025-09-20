@@ -95,7 +95,7 @@ const Character = ({
     }, 2200);
   };
 
-  // キャラクタークリック時の処理
+  // ケロチャクリック時の処理
   const handleCharacterClick = () => {
     if (!isClickable || isAnimating) return;
 
@@ -107,13 +107,11 @@ const Character = ({
       responses[Math.floor(Math.random() * responses.length)];
     changeDialogueAndMood(randomResponse.dialogue, randomResponse.mood);
 
-    // 外部コールバックも実行
     if (onCharacterClick) {
       onCharacterClick();
     }
   };
 
-  // propsが変わったら更新
   useEffect(() => {
     if (!isAnimating) {
       setCurrentExpression(mood);
@@ -125,14 +123,14 @@ const Character = ({
 
   return (
     <div className="">
-      {/* セリフ（アニメーションなし） */}
+      {/* セリフ */}
       {currentDialogue && (
         <div className="mb-3 w-[300px] text-center text-base font-bold text-secondary">
           <p>{currentDialogue}</p>
         </div>
       )}
 
-      {/* キャラクター本体（クリック可能・アニメーションなし） */}
+      {/* ケロチャ */}
       <div
         className={`relative inline-block ${isClickable ? "cursor-pointer" : ""}`}
         onClick={handleCharacterClick}

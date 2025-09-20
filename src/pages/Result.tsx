@@ -96,7 +96,18 @@ const ResultPage = () => {
           <img src={"/images/tea_bg.png"} alt="ティーカップ" className="" />
         </div>
         {/* ボタン */}
-        <div className="mb-4 mt-1 flex flex-col items-center justify-center gap-4 sm:mb-10">
+        <div className="mb-4 mt-2 flex items-center justify-center gap-2 sm:mb-10 sm:gap-5">
+          <Button variant="x-btn" onClick={handleShareX}>
+            Ｘで共有する！
+          </Button>
+          <Link to="/">
+            <Button variant="green-btn" onClick={handleRestart}>
+              ごちそうさま！
+            </Button>
+          </Link>
+        </div>
+
+        {/* <div className="mb-4 mt-1 flex flex-col items-center justify-center gap-4 sm:mb-10">
           <Button variant="select-btn" onClick={handleShareX}>
             Ｘで共有する！
           </Button>
@@ -105,7 +116,7 @@ const ResultPage = () => {
               ごちそうさま！
             </Button>
           </Link>
-        </div>
+        </div> */}
       </motion.div>
     </>
   );
