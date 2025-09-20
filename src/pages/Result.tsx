@@ -11,6 +11,12 @@ const ResultPage = () => {
   const [result, setResult] = useState<DiagnosisResult | null>(null);
   const navigate = useNavigate();
 
+  // 画像プリロード
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = "/images/tea_bg.png";
+  }, []);
+
   useEffect(() => {
     // ローカルストレージから結果を取得
     const savedResult = localStorage.getItem("diagnosisResult");
@@ -45,8 +51,8 @@ const ResultPage = () => {
 
   if (!result) {
     return (
-      <div style={{ padding: "20px", textAlign: "center" }}>
-        <p>結果を読み込み中...</p>
+      <div>
+        <p>ちょっと待っててね...</p>
       </div>
     );
   }
@@ -106,17 +112,6 @@ const ResultPage = () => {
             </Button>
           </Link>
         </div>
-
-        {/* <div className="mb-4 mt-1 flex flex-col items-center justify-center gap-4 sm:mb-10">
-          <Button variant="select-btn" onClick={handleShareX}>
-            Ｘで共有する！
-          </Button>
-          <Link to="/">
-            <Button variant="select-btn" onClick={handleRestart}>
-              ごちそうさま！
-            </Button>
-          </Link>
-        </div> */}
       </motion.div>
     </>
   );
