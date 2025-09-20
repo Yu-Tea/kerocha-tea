@@ -69,6 +69,20 @@ const Character = ({
     },
   };
 
+  // 画像プリロード
+  useEffect(() => {
+    const imageSet = new Set<string>();
+    Object.values(expressions).forEach((exp) => {
+      imageSet.add(exp.eyes);
+      imageSet.add(exp.mouth);
+      imageSet.add(exp.body);
+    });
+    imageSet.forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
+
   // セリフと表情を即時変更する関数
   const changeDialogueAndMood = (
     newDialogue: string,
