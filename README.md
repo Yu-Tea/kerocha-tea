@@ -7,7 +7,7 @@
 ## 🌈 🫖 機能紹介
 |初めましての方へ|質問に答えよう|
 |:---:|:---:|
-|![](https://i.gyazo.com/445e1532a0d6bc5ecc439e0d82fbcae8.gif)|![](https://i.gyazo.com/76abcb56c9f416c63c7fa58cdfee2b94.gif)|
+|<img src="https://i.gyazo.com/445e1532a0d6bc5ecc439e0d82fbcae8.gif" width="400">|<img src="https://i.gyazo.com/76abcb56c9f416c63c7fa58cdfee2b94.gif" width="400">|
 |まずはケロチャにお名前をお伝えください。二度目以降は、ケロチャがあなたのお名前を覚えてくれているので入力は不要です。|3つの質問に答えると、今の貴方にピッタリなティーを作ってくれます。Xに投稿すれば、作ってもらったお茶の記録を残すこともできます。|
 
 ## 🌈 🫖 ケロチャがお茶の色を選ぶ仕組みについて
