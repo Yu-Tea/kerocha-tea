@@ -8,30 +8,29 @@
 ## 🌈 🫖 機能紹介
 
 <table  style="text-align: center;">
-  <thead>
-    <tr>
-      <th align="center" width="50%">初めましての方へ</th>
-      <th align="center" width="50%">質問に答えよう</th>
-    </tr>
-    <tr>
-      <td>
-        <img src="https://i.gyazo.com/445e1532a0d6bc5ecc439e0d82fbcae8.gif">
-      </td>
-      <td>
-        <img src="https://i.gyazo.com/76abcb56c9f416c63c7fa58cdfee2b94.gif">
-      </td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        まずはケロチャにお名前をお伝えください。二度目以降は、ケロチャがあなたのお名前を覚えてくれているので入力は不要です。
-      </td>
-      <td>
-        3つの質問に答えると、今の貴方にピッタリなティーを作ってくれます。Xに投稿すれば、作ってもらったお茶の記録を残すこともできます。
-      </td>
-    </tr>
-  </tbody>
+  <tr>
+    <th align="center" width="50%">初めましての方へ</th>
+    <th align="center" width="50%">質問に答えよう</th>
+  </tr>
+  <tr>
+  <!-- HTML使用時のテーブル背景色位置ズレの調整用 -->
+  </tr>
+  <tr>
+    <td>
+      <img src="https://i.gyazo.com/445e1532a0d6bc5ecc439e0d82fbcae8.gif">
+    </td>
+    <td>
+      <img src="https://i.gyazo.com/76abcb56c9f416c63c7fa58cdfee2b94.gif">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      まずはケロチャにお名前をお伝えください。二度目以降は、ケロチャがあなたのお名前を覚えてくれているので入は不要です。
+    </td>
+    <td>
+      3つの質問に答えると、今の貴方にピッタリなティーを作ってくれます。Xに投稿すれば、作ってもらったお茶の記を残すこともできます。
+    </td>
+  </tr>
 </table>
 
 ## 🌈 🫖 ケロチャがお茶の色を選ぶ仕組みについて
