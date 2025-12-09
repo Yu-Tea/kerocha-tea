@@ -3,7 +3,7 @@
 ![](https://github.com/user-attachments/assets/15185cd4-764f-4f98-8966-2a7fae59e897)
 ほっと一息、ティータイムにしませんか？ケロチャが貴方にぴったりなお茶を作ってくれるそうです。どんな色のお茶になるかは貴方とケロチャ次第。ティーカップの中の小さな芸術を是非ご賞味ください。
 
-### 🍵[ご来場はこちらから](https://www.cafe-your-tea.com/)
+### 🍵[ご来場はこちらから](https://kerocha-tea.vercel.app)
 
 ## 🌈 🫖 機能紹介
 
