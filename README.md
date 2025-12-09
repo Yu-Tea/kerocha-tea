@@ -9,8 +9,8 @@
 
 <table  style="text-align: center;">
   <tr>
-    <th width="50%">初めましての方へ</th>
-    <th width="50%">質問に答えよう</th>
+    <td align="center" width="50%" style="font-weight: bold;">初めましての方へ</td>
+    <td align="center" width="50%" style="font-weight: bold;">質問に答えよう</td>
   </tr>
   <tr>
     <td>
