@@ -12,7 +12,7 @@ const NewUserName = () => {
   // コンポーネントがマウントされた時にユーザー名をクリア
   useEffect(() => {
     clearUserName();
-  }, []); // 空の依存配列で初回マウント時のみ実行
+  }, []); // 初回マウント時のみ実行
 
   const handleNameSubmit = (name: string) => {
     saveUserName(name);
